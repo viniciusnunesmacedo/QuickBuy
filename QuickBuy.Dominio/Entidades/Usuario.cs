@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace QuickBuy.Dominio.Entidades
 {
-    public class Usuario
+    public class Usuario : Entidade
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -12,6 +10,19 @@ namespace QuickBuy.Dominio.Entidades
         public string Nome { get; set; }
         public string SobreNome { get; set; }
 
-        public ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
+
+        public override void Validacao()
+        {
+            if (string.IsNullOrEmpty(Email))
+            {
+                AdicionarMensagemValidacao("E-mail não foi informado.");
+            }
+
+            if (string.IsNullOrEmpty(Senha))
+            {
+                AdicionarMensagemValidacao("Senha não foi informada.");
+            }
+        }
     }
 }
