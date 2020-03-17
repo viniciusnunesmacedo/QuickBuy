@@ -1,0 +1,74 @@
+<form class="form-signin">
+
+  <h1 class="h4 mb-2 login">Cadastro de Produto</h1>
+
+  <input type="text"
+         name="nomeProduto"
+         id="inputNome"
+         [(ngModel)]="produto.nome"
+         #nome="ngModel"
+         class="form-control mb-2 col-md-4"
+         [ngClass]="{
+            'is-invalid' : nome.invalid && (nome.dirty || nome.touched),
+            'is-valid': nome.valid && (nome.dirty || nome.touched)
+           }"
+         placeholder="Nome do produto"
+         required />
+
+  <div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+    <div *ngIf="nome.errors.required">
+      Nome é de preenchimento obrigatório.
+    </div>
+  </div>
+
+  <input type="text"
+         name="descricaoProduto"
+         id="inputDescricao"
+         [(ngModel)]="produto.descricao"
+         #descricao="ngModel"
+         class="form-control mb-2 col-md-4"
+         [ngClass]="{
+            'is-invalid' : descricao.invalid && (descricao.dirty || descricao.touched),
+            'is-valid': descricao.valid && (descricao.dirty || descricao.touched)
+           }"
+         placeholder="Descrição do produto"
+         required />
+
+  <div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+    <div *ngIf="descricao.errors.required">
+      Descrição é de preenchimento obrigatório.
+    </div>
+  </div>
+
+  <input type="text"
+         name="precoProduto"
+         id="inputPreco"
+         [(ngModel)]="produto.preco"
+         #preco="ngModel"
+         class="form-control mb-2 col-md-2"
+         [ngClass]="{
+            'is-invalid' : preco.invalid && (preco.dirty || preco.touched),
+            'is-valid': preco.valid && (preco.dirty || preco.touched)
+           }"
+         placeholder="Preço do produto"
+         required />
+
+  <div class="invalid-feedback mb-2" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
+    <div *ngIf="preco.errors.required">
+      Preço é de preenchimento obrigatório.
+    </div>
+  </div>
+
+  <div class="input-group mb-2">
+    <div class="custom-file col-md-4">
+      <input type="file" class="custom-file-input" id="inputFile" />
+      <label for="inputFile" class="custom-file-label">Escolha uma foto</label>
+    </div>
+  </div>
+
+  <button class="btn btn-primary btn-block mb-2 col-md-2" (click)="salvar()" [disabled]="ativarSpinner">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
+    Cadastrar
+  </button>
+
+</form>

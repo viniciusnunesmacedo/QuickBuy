@@ -7,18 +7,22 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
+import { LoginComponent } from './usuario/login/login.component'
 import { ProdutoComponent } from './produto/produto.component'
+import { GuardaRotas } from './autorizacao/guarda.rotas';
+
+import { UsuarioServico } from './servicos/usuario/usuario.servico';
+import { ProdutoServico } from './servicos/produto/produto.servico';
+import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
+    CadastroUsuarioComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
+    LoginComponent,
+    NavMenuComponent,
     ProdutoComponent
   ],
   imports: [
@@ -27,12 +31,12 @@ import { ProdutoComponent } from './produto/produto.component'
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'produto', component: ProdutoComponent }
+      { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
+      { path: 'entrar', component: LoginComponent },
+      { path: 'novo-usuario', component: CadastroUsuarioComponent }
     ])
   ],
-  providers: [],
+  providers: [UsuarioServico, ProdutoServico],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

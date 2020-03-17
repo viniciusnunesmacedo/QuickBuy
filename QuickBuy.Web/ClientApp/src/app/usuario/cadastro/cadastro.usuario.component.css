@@ -1,4 +1,6 @@
-.form-signin {
+@import url(../login/login.component.css);
+
+/*.form-signin {
   width: 100%;
   max-width: 420px;
   padding: 15px;
@@ -19,4 +21,4 @@
 
 .login {
   color: #666;
-}
+}*/
