@@ -14,6 +14,7 @@ export class ProdutoComponent implements OnInit {
   public ativarSpinner: boolean;
   public mensagem: string;
   public usuarioCadastrado: boolean;
+  public arquivoSelecionado: File;
 
   constructor(private produtoServico: ProdutoServico) {
 
@@ -21,6 +22,10 @@ export class ProdutoComponent implements OnInit {
 
   ngOnInit(): void {
     this.produto = new Produto();
+  }
+
+  public inputImagem(files: FileList) {
+    this.arquivoSelecionado = files.item[0];
   }
 
   public salvar() {
