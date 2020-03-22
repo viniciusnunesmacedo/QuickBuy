@@ -13,7 +13,7 @@ export class ProdutoComponent implements OnInit {
   public produto: Produto;
   public ativarSpinner: boolean;
   public mensagem: string;
-  public usuarioCadastrado: boolean;
+  public produtoCadastrado: boolean;
   public arquivoSelecionado: File;
 
   constructor(private produtoServico: ProdutoServico) {
@@ -24,17 +24,41 @@ export class ProdutoComponent implements OnInit {
     this.produto = new Produto();
   }
 
-  public inputImagem(files: FileList) {
-    this.arquivoSelecionado = files.item[0];
-  }
-
-  public salvar() {
+  public selecaoImagem(files: FileList) {
 
     this.ativarSpinner = true;
 
-    this.produtoServico.salvar(this.produto)
+    this.arquivoSelecionado = files.item(0);
+
+    this.produtoServico.enviarArquivo(this.arquivoSelecionado).subscribe(
+      nomeArquivo => {
+
+        this.produto.nomeArquivo = nomeArquivo;
+        
+        this.ativarSpinner = false;
+      },
+      e => {
+        console.log(e.error);
+        this.ativarSpinner = false;
+      }
+    )
+  }
+
+  public cadastrar() {
+
+    this.ativarSpinner = true;
+    this.produtoCadastrado = false;
+    this.mensagem = "";
+
+
+    this.produtoServico.cadastrar(this.produto)
       .subscribe(
         produtoJson => {
+
+          this.ativarSpinner = false;
+
+          this.produtoCadastrado = true;
+
           console.log(produtoJson);
         },
         err => {
@@ -42,6 +66,8 @@ export class ProdutoComponent implements OnInit {
           this.ativarSpinner = false;
 
           console.log(err.error);
+
+          this.mensagem = err.error;
         });
   }
 

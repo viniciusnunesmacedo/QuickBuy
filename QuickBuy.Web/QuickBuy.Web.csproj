@@ -26,10 +26,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\arquivos\0087361a-6502-4e5a-897a-e67d5cc2bfe2.png" />
+    <Content Remove="wwwroot\arquivos\0b726d00-d1bf-4b16-b39b-1f280a2f3d24.png" />
+    <Content Remove="wwwroot\arquivos\15779e2a-ac05-42d0-94a1-e4e64acc33ea.png" />
+    <Content Remove="wwwroot\arquivos\2035129b-9eed-4e5e-a027-e5a56c837e42.png" />
+    <Content Remove="wwwroot\arquivos\274e3fd0-3e9d-436b-806b-975a192f012b.png" />
+    <Content Remove="wwwroot\arquivos\3bc9095b-a32e-439e-bd3e-910ecf4b9a1a.png" />
+    <Content Remove="wwwroot\arquivos\46ca7388-66f1-427f-86ab-5bf292698632.png" />
+    <Content Remove="wwwroot\arquivos\4e4a3b5e-83ad-4066-9d05-0859f14330f6.png" />
+    <Content Remove="wwwroot\arquivos\531981d8-967a-464a-8099-6fc9ec7adbae.png" />
+    <Content Remove="wwwroot\arquivos\72a9ed0b-426f-4170-a571-d681ab12ed8d.png" />
+    <Content Remove="wwwroot\arquivos\7c9c767a-f815-41ac-b706-48ad9852669d.png" />
+    <Content Remove="wwwroot\arquivos\8aa8eee7-1ca2-4702-82a5-e6ed8ed9c8dd.png" />
+    <Content Remove="wwwroot\arquivos\94e30d61-3c67-4610-a7ba-ed7efeef5743.png" />
+    <Content Remove="wwwroot\arquivos\ad1d1382-1089-47b1-ac79-dcef95fce1fe.png" />
+    <Content Remove="wwwroot\arquivos\d08eca36-f71a-4741-9936-3e9f084f3630.png" />
+    <Content Remove="wwwroot\arquivos\d0bde9dc-f55a-4de8-80e6-99dc9e0f0cb6.png" />
+    <Content Remove="wwwroot\arquivos\f301543d-e20c-4547-9faf-ac84fd486ab8.png" />
+    <Content Remove="wwwroot\arquivos\f394143f-5bd2-429e-a001-ef40cc9b16af.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\proxy.config.js" />
     <None Remove="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
     <None Remove="ClientApp\src\app\modelo\produto.ts" />
     <None Remove="ClientApp\src\app\modelo\usuario.ts" />
+    <None Remove="ClientApp\src\app\produto\pesquisa\pesquisa.produto.component.ts" />
     <None Remove="ClientApp\src\app\produto\produto.component.ts" />
     <None Remove="ClientApp\src\app\servicos\produto\produto.servico.ts" />
     <None Remove="ClientApp\src\app\servicos\usuario\usuario.servico.ts" />
@@ -45,6 +67,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\produto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\usuario.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\produto\pesquisa\pesquisa.produto.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\produto\produto.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\servicos\produto\produto.servico.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\servicos\usuario\usuario.servico.ts" />
@@ -60,6 +83,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\dist\" />
+    <Folder Include="wwwroot\arquivos\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

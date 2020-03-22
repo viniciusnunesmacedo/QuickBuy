@@ -8,11 +8,11 @@ import { Produto } from "../../modelo/produto";
 })
 export class ProdutoServico implements OnInit {
 
-  private baseURL: string;
+  private _baseURL: string;
   public produtos: Produto[];
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseURL = baseUrl;
+    this._baseURL = baseUrl;
   }
 
   ngOnInit(): void {
@@ -23,20 +23,30 @@ export class ProdutoServico implements OnInit {
     return new HttpHeaders().set('content-type', 'application/json');
   }
 
-  public salvar(produto: Produto): Observable<Produto> {
+  public cadastrar(produto: Produto): Observable<Produto> {
 
-    return this.http.post<Produto>(this.baseURL + "api/produto", JSON.stringify(produto), { headers: this.headers });
+    console.log(JSON.stringify(produto));
+
+    return this.http.post<Produto>(this._baseURL + "api/produto", JSON.stringify(produto), { headers: this.headers });
   }
 
   public obterProdutos(): Observable<Produto[]> {
 
-    return this.http.get<Produto[]>(this.baseURL + "api/produto");
+    return this.http.get<Produto[]>(this._baseURL + "api/produto");
   }
 
   public obterProduto(produtoId: number): Observable<Produto> {
 
-    return this.http.get<Produto>(this.baseURL + "api/produto");
-    //return this.http.post<Produto>(this.baseURL + "api/produto", JSON.stringify(produto), { headers: this.headers });
+    return this.http.get<Produto>(this._baseURL + "api/produto/obter");
+  }
+
+  public enviarArquivo(arquivoSelecionado: File): Observable<string> {
+
+    const formData: FormData = new FormData();
+
+    formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
+
+    return this.http.post<string>(this._baseURL + "api/produto/enviarArquivo", formData);
   }
 
 }

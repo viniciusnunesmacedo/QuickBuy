@@ -10,18 +10,19 @@ namespace QuickBuy.Dominio.Entidades
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
+        public string NomeArquivo { get; set; }
 
         public override void Validacao()
         {
-            //if (string.IsNullOrEmpty(Cep))
-            //{
-            //    AdicionarMensagemValidacao("Cep deve estra preenchido");
-            //}
+            if (string.IsNullOrEmpty(Nome))
+            {
+                AdicionarMensagemValidacao("Nome deve estar preenchido");
+            }
 
-            //if (string.IsNullOrEmpty(Cep))
-            //{
-            //    AdicionarMensagemValidacao("Cep deve estra preenchido");
-            //}
+            if (string.IsNullOrEmpty(Descricao))
+            {
+                AdicionarMensagemValidacao("Descrição deve estar preenchido");
+            }
         }
     }
 }

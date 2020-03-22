@@ -61,14 +61,23 @@
 
   <div class="input-group mb-2">
     <div class="custom-file col-md-4">
-      <input type="file" class="custom-file-input" id="inputImagem" (change)="inputImagem($event.target.files)" />
+      <input type="file" class="custom-file-input" id="inputImagem" (change)="selecaoImagem($event.target.files)" />
       <label for="inputImagem" class="custom-file-label">Escolha uma foto</label>
     </div>
   </div>
 
-  <button class="btn btn-primary btn-block mb-2 col-md-2" (click)="salvar()" [disabled]="ativarSpinner">
+  <button class="btn btn-primary btn-block mb-2 col-md-2" (click)="cadastrar()" [disabled]="ativarSpinner">
     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
     Cadastrar
   </button>
 
+  <div class="alert alert-danger col-md-4" role="alert" *ngIf="mensagem">
+    {{mensagem}}
+  </div>
+
+  <div class="alert alert-success col-md-4" *ngIf="produtoCadastrado">
+    Produto cadastrado com sucesso!
+  </div>
+
 </form>
+
