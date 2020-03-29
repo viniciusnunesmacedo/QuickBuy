@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   public returnUrl: string;
   public mensagem: string;
 
-  private ativarSpinner: boolean;
+  public ativarSpinner: boolean;
 
   constructor(private router: Router,
     private activatedRouter: ActivatedRoute,

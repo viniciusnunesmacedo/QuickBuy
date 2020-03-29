@@ -37,7 +37,7 @@ namespace QuickBuy.Repositorio.Repositorios
             return QuickBuyContexto.Set<TEntidade>().ToList();
         }
 
-        public void Remover(TEntidade entidade)
+        public void Excluir(TEntidade entidade)
         {
             QuickBuyContexto.Set<TEntidade>().Remove(entidade);
             QuickBuyContexto.SaveChanges();

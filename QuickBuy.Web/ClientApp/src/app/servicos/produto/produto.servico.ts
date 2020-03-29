@@ -23,13 +23,6 @@ export class ProdutoServico implements OnInit {
     return new HttpHeaders().set('content-type', 'application/json');
   }
 
-  public cadastrar(produto: Produto): Observable<Produto> {
-
-    console.log(JSON.stringify(produto));
-
-    return this.http.post<Produto>(this._baseURL + "api/produto", JSON.stringify(produto), { headers: this.headers });
-  }
-
   public obterProdutos(): Observable<Produto[]> {
 
     return this.http.get<Produto[]>(this._baseURL + "api/produto");
@@ -49,4 +42,14 @@ export class ProdutoServico implements OnInit {
     return this.http.post<string>(this._baseURL + "api/produto/enviarArquivo", formData);
   }
 
+  public cadastrar(produto: Produto): Observable<Produto> {
+
+    console.log(JSON.stringify(produto));
+
+    return this.http.post<Produto>(this._baseURL + "api/produto", JSON.stringify(produto), { headers: this.headers });
+  }
+
+  public excluir(produto: Produto): Observable<Produto[]> {
+    return this.http.post<Produto[]>(this._baseURL + "api/produto/excluir", JSON.stringify(produto), { headers: this.headers });
+  }
 }

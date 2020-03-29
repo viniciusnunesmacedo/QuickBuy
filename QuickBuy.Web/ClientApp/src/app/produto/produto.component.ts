@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { ProdutoServico } from "../servicos/produto/produto.servico";
 import { Produto } from "../modelo/produto";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "produto",
@@ -16,12 +17,17 @@ export class ProdutoComponent implements OnInit {
   public produtoCadastrado: boolean;
   public arquivoSelecionado: File;
 
-  constructor(private produtoServico: ProdutoServico) {
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.produto = new Produto();
+    var produtoSession = sessionStorage.getItem("produtoSessao");
+    if (produtoSession) {
+      this.produto = JSON.parse(produtoSession);
+    } else {
+      this.produto = new Produto();
+    }
   }
 
   public selecaoImagem(files: FileList) {
@@ -34,7 +40,7 @@ export class ProdutoComponent implements OnInit {
       nomeArquivo => {
 
         this.produto.nomeArquivo = nomeArquivo;
-        
+
         this.ativarSpinner = false;
       },
       e => {
@@ -56,10 +62,9 @@ export class ProdutoComponent implements OnInit {
         produtoJson => {
 
           this.ativarSpinner = false;
-
           this.produtoCadastrado = true;
+          this.router.navigate(['/pesquisar-produtos']);
 
-          console.log(produtoJson);
         },
         err => {
 

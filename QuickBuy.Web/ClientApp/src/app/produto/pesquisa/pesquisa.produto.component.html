@@ -1,6 +1,6 @@
 <h1 class="h4 titulo mb-2">Pesquisa de Produtos</h1>
 
-<button class="btn btn-primary mb-2" (click)="adicionarProduto">Adicionar Produto</button>
+<button class="btn btn-primary mb-2" (click)="adicionarProduto()">Adicionar Produto</button>
 
 <p *ngIf="!produtos">Carregando Produtos...</p>
 
@@ -20,9 +20,9 @@
       <td>{{p.nome}}</td>
       <td>{{p.descricao}}</td>
       <td>R$: {{p.preco}}</td>
-      <td><img src="../../../../../arquivos/{{p.nomeArquivo}}" /></td>
-      <td><a href="#">Editar</a></td>
-      <td><a href="#">Excluir</a></td>
+      <td><img style="width:50px;" src="../../../../../arquivos/{{p.nomeArquivo}}" /></td>
+      <td><button class="btn btn-primary btn-sm" (click)="editarProduto(p)">Editar</button></td>
+      <td><button class="btn btn-primary btn-sm" (click)="excluirProduto(p)">Excluir</button></td>
     </tr>
   </tbody>
 </table>

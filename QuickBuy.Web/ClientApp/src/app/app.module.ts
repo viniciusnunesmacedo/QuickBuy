@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { TruncateModule } from 'ng2-truncate';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -16,6 +17,12 @@ import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { ProdutoServico } from './servicos/produto/produto.servico';
 import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
 import { PesquisaProdutoComponent } from './produto/pesquisa/pesquisa.produto.component';
+import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
+import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
+import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
+import { LojaCarrinhoComponent } from './loja/carrinho/loja.carrinho.component';
+import { PedidoServico } from './servicos/pedido/pedido.servico';
+import { LojaCompraFinalizadoComponent } from './loja/finalizado/loja.compra.finalizado.component';
 
 @NgModule({
   declarations: [
@@ -25,21 +32,33 @@ import { PesquisaProdutoComponent } from './produto/pesquisa/pesquisa.produto.co
     LoginComponent,
     NavMenuComponent,
     ProdutoComponent,
-    PesquisaProdutoComponent
+    PesquisaProdutoComponent,
+    LojaPesquisaComponent,
+    LojaProdutoComponent,
+    LojaEfetivarComponent,
+    LojaCarrinhoComponent,
+    LojaCompraFinalizadoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    TruncateModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
-      { path: 'pesquisar-produtos', component: PesquisaProdutoComponent },
+      { path: 'loja-produto', component: LojaProdutoComponent },
+      { path: 'loja-efetivar', component: LojaEfetivarComponent, canActivate: [GuardaRotas] },
+      { path: 'loja-carrinho', component: LojaCarrinhoComponent },
+      { path: 'loja-compra-finalizada', component: LojaCompraFinalizadoComponent },
+      { path: 'pesquisar-produtos', component: PesquisaProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent }
+
     ])
   ],
-  providers: [UsuarioServico, ProdutoServico],
+  providers: [UsuarioServico, ProdutoServico, PedidoServico],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

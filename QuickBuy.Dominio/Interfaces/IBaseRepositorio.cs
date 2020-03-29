@@ -9,6 +9,6 @@ namespace QuickBuy.Dominio.Interfaces
         TEntidade ObterPorId(int id);
         IEnumerable<TEntidade> ObterTodos();
         void Atualizar(TEntidade entidade);
-        void Remover(TEntidade entidade);
+        void Excluir(TEntidade entidade);
     }
 }

@@ -105,6 +105,8 @@ namespace QuickBuy.Repositorio.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("EAdministrador");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(50);

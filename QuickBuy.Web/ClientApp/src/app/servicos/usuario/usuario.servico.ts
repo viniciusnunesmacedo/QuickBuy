@@ -36,6 +36,10 @@ export class UsuarioServico {
       this._usuario.senha != "";
   }
 
+  public usuarioAutenticadoPermissaoAdministrador(): boolean {
+    return this.usuarioAutenticado() && this.usuario.eAdministrador;
+  }
+
   public limparSessao() {
     sessionStorage.setItem("usuario-autenticado", "");
     this._usuario = null;
